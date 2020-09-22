@@ -1,0 +1,118 @@
+.Home {
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa;
+  .container {
+    margin-top: 8.4rem;
+    .posts-list {
+      max-width: 614px;
+      width: 100%;
+      .post {
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 60px;
+        box-sizing: border-box;
+        border: 1px solid #dbdbdb;
+        background-color: white;
+        margin-bottom: 6rem;
+        .post-header {
+          height: 6rem;
+          padding: 1.6rem;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          .post-header-profile-info {
+            display: flex;
+            align-items: center;
+            .post-header-name {
+              margin-left: 1.4rem;
+            }
+          }
+        }
+        .post-content {
+          width: 100%;
+        }
+        .post-caption {
+          padding: 1.2rem 1.6rem;
+          .post-likes {
+            margin-bottom: 0.8rem;
+          }
+          .post-caption-group {
+            margin-bottom: 0.4rem;
+          }
+          .post-caption-content,
+          .post-reply-content {
+            font-size: 1.4rem;
+          }
+          .post-replies {
+            margin-top: 2.2rem;
+            .post-reply-group {
+              margin-bottom: 0.4rem;
+            }
+          }
+        }
+        .add-comment {
+          height: 5.5rem;
+          border-top: 1px solid #efefef;
+          form {
+            height: 100%;
+            align-items: center;
+            display: flex;
+            position: relative;
+            input {
+              padding-left: 1.6rem;
+              padding-right: 6rem;
+              width: 100%;
+              border: none;
+              font-size: 1.4rem;
+              &:focus {
+                outline: none;
+              }
+            }
+            button {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 1.6rem;
+              background: none;
+              border: none;
+              color: #0095f6;
+              font-weight: 600;
+              font-size: 1.4rem;
+              &:hover {
+                cursor: pointer;
+              }
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .side-profile {
+      flex: 1;
+      position: fixed;
+      left: 894.5px;
+      max-width: 293px;
+      width: 100%;
+      margin-bottom: 10px;
+      margin-top: 18px;
+      .side-profile-me {
+        align-items: center;
+        display: flex;
+        .side-profile-names {
+          margin-left: 20px;
+        }
+      }
+      .suggestions-for-me {
+        margin-top: 1.6rem;
+        .suggestion {
+          padding: 8px 0;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

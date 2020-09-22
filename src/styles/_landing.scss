@@ -1,0 +1,72 @@
+.Landing {
+  display: flex;
+  background-color: #fafafa;
+  height: 100%;
+  justify-content: center;
+  .landing-form-container {
+    height: fit-content;
+    box-sizing: border-box;
+    max-width: 35rem;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    width: 35rem;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 4rem;
+    img {
+      width: 175px;
+      height: 5.1rem;
+      margin: 2.2rem 0;
+    }
+    form {
+      & > div:not(:first-child) {
+        margin-top: 2rem;
+      }
+    }
+    .separator {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 2.6rem 0;
+      .left-line,
+      .right-line {
+        height: 1px;
+        background-color: #dbdbdb;
+        flex: 1;
+      }
+      .or {
+        margin: 0 1.8rem;
+        color: #8e8e8e;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+    }
+    .alternative-action {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 4rem;
+      p {
+        font-weight: 300;
+        margin-bottom: 2.4rem;
+        font-size: 1.4rem;
+      }
+      button {
+        color: #0095f6;
+        font-weight: 600;
+        font-size: 1.6rem;
+        border: none;
+        background: none;
+        &:hover {
+          cursor: pointer;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

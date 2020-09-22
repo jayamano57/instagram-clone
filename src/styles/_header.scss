@@ -1,0 +1,39 @@
+.Header {
+  height: 5.4rem;
+  padding: 0.9rem 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: white;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  .header-inner {
+    justify-content: space-between;
+    align-items: center;
+    a {
+      img {
+        height: 2.9rem;
+        margin-top: 1rem;
+      }
+    }
+    .header-profile {
+      display: flex;
+      align-items: center;
+      height: 22px;
+      & > * {
+        height: 100%;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        border: none;
+        background: none;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
