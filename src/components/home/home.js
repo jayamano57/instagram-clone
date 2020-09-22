@@ -13,16 +13,18 @@ const Home = ({ open, handleClose, fullName, username }) => {
     console.log(mounted);
     // onSnapshot fires whenever a new document (post) gets added
     if (mounted) {
-      db.collection("posts").onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => {
-            return {
-              id: doc.id,
-              post: doc.data(),
-            };
-          })
-        );
-      });
+      db.collection("posts")
+        .orderBy("timestamp", "desc")
+        .onSnapshot((snapshot) => {
+          setPosts(
+            snapshot.docs.map((doc) => {
+              return {
+                id: doc.id,
+                post: doc.data(),
+              };
+            })
+          );
+        });
     }
     return () => {
       mounted = false;
