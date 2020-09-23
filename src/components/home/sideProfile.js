@@ -53,9 +53,8 @@ const SideProfile = ({ username, fullName }) => {
   const [leftPosition, setLeftPosition] = useState(getLeftPosition());
   useEffect(() => {
     window.addEventListener("resize", updateSize);
-
     return () => {
-      window.addEventListener("resize", updateSize);
+      window.removeEventListener("resize", updateSize);
     };
   });
   return (

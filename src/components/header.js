@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ handleOpen }) => {
+const Header = ({ handleOpen, username }) => {
   const classes = useStyles();
   return (
     <nav className="Header">
       <div className="header-inner container">
         <a href="/">
-          <img src={IGLogo} className="img-responsive" alt="Instagram Logo" />
+          <img src={IGLogo} alt="Instagram Logo" />
         </a>
         <div className="header-profile">
           <button title="upload" onClick={handleOpen}>
@@ -33,7 +33,11 @@ const Header = ({ handleOpen }) => {
           <button title="logout" onClick={() => auth.signOut()}>
             <ExitToAppIcon className={classes.headerIcon} />
           </button>
-          <Avatar className={classes.user} alt="Remy Sharp" src="" />
+          <Avatar
+            className={classes.user}
+            alt={`${username}'s profile picture`}
+            src=""
+          />
         </div>
       </div>
     </nav>

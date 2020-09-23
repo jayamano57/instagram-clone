@@ -49,13 +49,11 @@ const Post = ({ postId, username, imageUrl, caption, signedInUser }) => {
             })
           );
         });
-      console.log("comments", comments);
     }
-
     return () => {
       unsubscribe();
     };
-  }, [postId]);
+  }, []);
 
   const reply = (e) => {
     e.preventDefault();
@@ -72,7 +70,7 @@ const Post = ({ postId, username, imageUrl, caption, signedInUser }) => {
         <div className="post-header-profile-info">
           <Avatar
             className={classes["profile-avatar"]}
-            alt="Remy Sharp"
+            alt={signedInUser}
             src=""
           />
           <div className="post-header-name text-strong">{username}</div>

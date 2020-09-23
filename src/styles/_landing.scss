@@ -1,14 +1,14 @@
 .Landing {
   display: flex;
-  background-color: #fafafa;
+  background-color: $second-bg-color;
   height: 100%;
   justify-content: center;
   .landing-form-container {
     height: fit-content;
     box-sizing: border-box;
     max-width: 35rem;
-    background-color: white;
-    border: 1px solid #dbdbdb;
+    background-color: $main-bg-color;
+    border: 1px solid $border-light-grey;
     border-radius: 1px;
     width: 35rem;
     margin: 5rem 3rem 0 3rem;
@@ -17,7 +17,7 @@
     align-items: center;
     padding: 1rem 4rem;
     img {
-      width: 175px;
+      width: 17.5rem;
       height: 5.1rem;
       margin: 2.2rem 0;
     }
@@ -55,7 +55,7 @@
         font-size: 1.4rem;
       }
       button {
-        color: #0095f6;
+        color: $main-blue;
         font-weight: 600;
         font-size: 1.6rem;
         border: none;

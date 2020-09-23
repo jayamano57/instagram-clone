@@ -50,7 +50,7 @@ function App() {
     return (
       <Router>
         <PrivateRoute exact path="/">
-          <Header handleOpen={handleOpen} />
+          <Header handleOpen={handleOpen} username={user?.username} />
           <Home
             open={open}
             handleClose={handleClose}

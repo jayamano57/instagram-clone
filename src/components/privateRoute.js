@@ -3,13 +3,9 @@ import { isAuthenticated } from "../utils";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  console.log(isAuthenticated());
-  const { exact, path } = { ...rest };
   return (
     <Route
-      // ... rest are the props in PrivateRoute (exact, path). setting those props here
-      exact={exact}
-      path={path}
+      {...rest}
       render={() =>
         isAuthenticated() ? (
           children

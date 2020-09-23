@@ -6,39 +6,17 @@ import { auth, db } from "./../../firebase";
 import { useHistory } from "react-router-dom";
 
 import useForm from "../../hooks/useForm";
-const Landing = ({ login, user, setUser }) => {
+const Landing = ({ login }) => {
   const history = useHistory();
   const formData = login
     ? { email: "", password: "" }
     : { email: "", fullName: "", username: "", password: "" };
   const [form, changeHandler] = useForm(formData);
 
-  //   useEffect(() => {
-  //     // will listen for any single time an authentication change happens (log in, log out, sign up)
-  //     // even though state is not persistent, this method keeps us logged in because of cookie tracking
-  //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-  //       if (authUser) {
-  //         console.log(authUser);
-  //         setUser(authUser);
-  //       } else {
-  //         setUser(null);
-  //       }
-  //     });
-
-  //     return () => {
-  //       //perform some cleanup before useEffect runs/ detach listener, then rerun to avoid duplicate event listeners
-  //       unsubscribe();
-  //     };
-  //   }, [user, form.username]);
-
   const signUp = (e) => {
     auth
       .createUserWithEmailAndPassword(form.email, form.password)
       .then((authUser) => {
-        // return authUser.user.updateProfile({
-        //   displayName: form.username,
-        //   photoURL: form.fullName,
-        // })
         const { email, uid } = authUser.user;
         db.collection("users").add({
           email,
@@ -53,7 +31,7 @@ const Landing = ({ login, user, setUser }) => {
   const loginUser = (e) => {
     auth
       .signInWithEmailAndPassword(form.email, form.password)
-      .then((authUser) => {
+      .then(() => {
         history.push("/");
       })
       .catch((error) => alert(error.message));

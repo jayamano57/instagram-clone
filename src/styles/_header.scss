@@ -3,7 +3,7 @@
   padding: 0.9rem 2rem;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid $border-light-grey;
   background-color: white;
   box-sizing: border-box;
   width: 100%;
@@ -21,7 +21,7 @@
     .header-profile {
       display: flex;
       align-items: center;
-      height: 22px;
+      height: 2.2rem;
       & > * {
         height: 100%;
       }

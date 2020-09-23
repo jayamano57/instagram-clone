@@ -73,6 +73,7 @@ const ImageUploadModal = ({ open, handleClose, username }) => {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
   const classes = useStyles({ progress, image });
 
   const handleFileChange = (e) => {
@@ -82,7 +83,7 @@ const ImageUploadModal = ({ open, handleClose, username }) => {
   };
 
   const handleUpload = (e) => {
-    // access storage in firebase, create and get a reference to this folder (/images), image.name is the filename (image.png), then put this image here
+    // access storage in firebase, create and get a reference to this folder (/images), image.name is the filename (image.png), then put this image in this location
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
     uploadTask.on(
@@ -93,6 +94,7 @@ const ImageUploadModal = ({ open, handleClose, username }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(progress);
+        setUploading(true);
       },
       (error) => {
         //error function
@@ -113,9 +115,11 @@ const ImageUploadModal = ({ open, handleClose, username }) => {
               username: username,
             });
 
+            //reset state data after uploaded
             setCaption("");
             setImage(null);
             setProgress(0);
+            setUploading(false);
             handleClose();
           });
       }
@@ -182,6 +186,7 @@ const ImageUploadModal = ({ open, handleClose, username }) => {
               className={classes["upload-btn"]}
               disableElevation
               onClick={handleUpload}
+              disabled={!(caption && image) || uploading}
             >
               Post
             </Button>
