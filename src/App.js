@@ -14,18 +14,18 @@ function App() {
   // have to wait until firebase initializes, otherwise, the auth will be delayed an will have user set as null
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
   useEffect(() => {
-    console.log("hit");
-
     // will listen for any single time an authentication change happens (log in, log out, sign up)
     // even though state is not persistent, this method keeps us logged in because of cookie tracking
-    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
       setFirebaseInitialized(true);
       if (authUser) {
-        const userDoc = await db
-          .collection("users")
+        db.collection("users")
           .where("uid", "==", authUser.uid)
-          .get();
-        setUser(userDoc.docs[0].data());
+          .get()
+          .then((user) => {
+            console.log("set user");
+            setUser(user.docs[0].data());
+          });
       } else {
         setUser(null);
       }

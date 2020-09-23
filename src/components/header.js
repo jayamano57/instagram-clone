@@ -9,12 +9,10 @@ import { auth } from "./../firebase";
 const useStyles = makeStyles((theme) => ({
   user: {
     width: "22px",
-    marginLeft: "22px",
   },
   headerIcon: {
     height: "22px",
     width: "22px",
-    marginLeft: "22px",
   },
 }));
 

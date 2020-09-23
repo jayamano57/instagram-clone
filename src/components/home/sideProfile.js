@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
+import bigTuna from "../../media/jim-halpert.png";
+import asst2regionalmngr from "../../media/dwight-schrute.png";
+import nard_DOG from "../../media/nard-dog.png";
+import michaelscarn007 from "../../media/michael-scarn.png";
+import beeeeesly from "../../media/pam-beesly.png";
 const useStyles = makeStyles((theme) => ({
   "side-avatar": {
     height: "56px",
@@ -32,22 +37,27 @@ const SideProfile = ({ username, fullName }) => {
     {
       id: 1,
       username: "big-tuna",
+      profilePic: bigTuna,
     },
     {
       id: 2,
       username: "michaelscarn007",
+      profilePic: michaelscarn007,
     },
     {
       id: 3,
       username: "asst2regionalmngr",
+      profilePic: asst2regionalmngr,
     },
     {
       id: 4,
       username: "beeeeesly",
+      profilePic: beeeeesly,
     },
     {
       id: 5,
       username: "nard_DOG",
+      profilePic: nard_DOG,
     },
   ]);
   const [leftPosition, setLeftPosition] = useState(getLeftPosition());
@@ -78,7 +88,10 @@ const SideProfile = ({ username, fullName }) => {
         {suggestions.map((user) => {
           return (
             <div className="suggestion" key={user.id}>
-              <Avatar className={classes["suggestion-avatar"]} />
+              <Avatar
+                className={classes["suggestion-avatar"]}
+                src={user.profilePic}
+              />
               <p
                 className="text-strong"
                 style={{
