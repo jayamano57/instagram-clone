@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 const useStyles = makeStyles((theme) => ({
@@ -13,9 +13,53 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const SideProfile = ({ username, fullName }) => {
+  const getLeftPosition = () => {
+    const windowWidth = window.innerWidth;
+    const containerWidth = 935;
+    const containerGaps = windowWidth - containerWidth;
+    const postWidth = 612;
+    const marginLeft = 60.5;
+    const newLeftPosition = containerGaps / 2 + postWidth + marginLeft;
+    return newLeftPosition;
+  };
+  const updateSize = () => {
+    const left = getLeftPosition();
+    setLeftPosition(left);
+  };
+
   const classes = useStyles();
+  const [suggestions, setSuggestions] = useState([
+    {
+      id: 1,
+      username: "big-tuna",
+    },
+    {
+      id: 2,
+      username: "michaelscarn007",
+    },
+    {
+      id: 3,
+      username: "asst2regionalmngr",
+    },
+    {
+      id: 4,
+      username: "beeeeesly",
+    },
+    {
+      id: 5,
+      username: "nard_DOG",
+    },
+  ]);
+  const [leftPosition, setLeftPosition] = useState(getLeftPosition());
+  useEffect(() => {
+    window.addEventListener("resize", updateSize);
+
+    return () => {
+      window.addEventListener("resize", updateSize);
+    };
+  });
   return (
-    <section className="side-profile">
+    <section className="side-profile" style={{ left: `${leftPosition}px` }}>
       <div className="side-profile-me">
         <Avatar className={classes["side-avatar"]} />
         <div className="side-profile-names">
@@ -32,66 +76,22 @@ const SideProfile = ({ username, fullName }) => {
         >
           Suggestions For You
         </div>
-        <div className="suggestion">
-          <Avatar className={classes["suggestion-avatar"]} />
-          <p
-            className="text-strong"
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          >
-            mscott69
-          </p>
-        </div>
-        <div className="suggestion">
-          <Avatar className={classes["suggestion-avatar"]} />
-          <p
-            className="text-strong"
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          >
-            mscott69
-          </p>
-        </div>
-        <div className="suggestion">
-          <Avatar className={classes["suggestion-avatar"]} />
-          <p
-            className="text-strong"
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          >
-            mscott69
-          </p>
-        </div>
-        <div className="suggestion">
-          <Avatar className={classes["suggestion-avatar"]} />
-          <p
-            className="text-strong"
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          >
-            mscott69
-          </p>
-        </div>
-        <div className="suggestion">
-          <Avatar className={classes["suggestion-avatar"]} />
-          <p
-            className="text-strong"
-            style={{
-              position: "relative",
-              top: "-2px",
-            }}
-          >
-            mscott69
-          </p>
-        </div>
+        {suggestions.map((user) => {
+          return (
+            <div className="suggestion" key={user.id}>
+              <Avatar className={classes["suggestion-avatar"]} />
+              <p
+                className="text-strong"
+                style={{
+                  position: "relative",
+                  top: "-2px",
+                }}
+              >
+                {user.username}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

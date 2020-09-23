@@ -4,6 +4,10 @@
   background-color: #fafafa;
   .container {
     margin-top: 8.4rem;
+    display: flex;
+    @media (max-width: 1000px) {
+      justify-content: center;
+    }
     .posts-list {
       max-width: 614px;
       width: 100%;
@@ -18,6 +22,7 @@
         .post-header {
           height: 6rem;
           padding: 1.6rem;
+          border-bottom: 1px solid #dbdbdb;
           display: flex;
           align-items: center;
           box-sizing: border-box;
@@ -93,7 +98,6 @@
     .side-profile {
       flex: 1;
       position: fixed;
-      left: 894.5px;
       max-width: 293px;
       width: 100%;
       margin-bottom: 10px;
@@ -112,6 +116,9 @@
           display: flex;
           align-items: center;
         }
+      }
+      @media (max-width: 1000px) {
+        display: none;
       }
     }
   }
